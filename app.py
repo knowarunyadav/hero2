@@ -60,16 +60,5 @@ def iris_p():
     return render_template('iris.html', prediction_text='{}'.format(output))
 
 
-@app.route('/titanic_predict_api',methods=['POST'])
-def titanic_predict_api():
-    '''
-    For direct API calls trought request
-    '''
-    data = request.get_json(force=True)
-    prediction = titanic.predict([np.array(list(data.values()))])
-
-    output = prediction[0]
-    return jsonify(output)
-
 if __name__ == "__main__":
     app.run(debug=True)
